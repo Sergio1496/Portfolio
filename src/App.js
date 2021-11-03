@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+
+import { makeStyles } from '@mui/styles';
 import './App.css';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import Navbar from './components/Navbar/Navbar';
+import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette:{
+    primary: {main: "#FEC760"},
+    secondary: {main: "#F0A71C"}
+  }
+});
+
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Navbar/>
+        <About id="about" title="Sobre mí"/>
+        <Projects id="projects" title="Mis proyectos" />
+        <Skills id="skills" title="Mis conocimientos"/>
+        <Contact id="contact" title="Contacto"/>
+      </div>
+    </ThemeProvider>
+      
   );
 }
-
+const useStyles = makeStyles((theme) => ({
+  root: {
+    
+  }
+}));
 export default App;
